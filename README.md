@@ -1,1 +1,1 @@
-![фото_1.png]([https://github.com/658758463486976/S-Blank/blob/31a95320e94351326e7774a239f958903c7f6264/%D0%9D%D0%BE%D0%B2%D0%B8%D0%B9%20%D0%BF%D1%80%D0%BE%D1%94%D0%BA%D1%82.png](https://github.com/An1sov/Happy_New_Year_VPU/commit/66d84abc3db68e0b8beea6e014c5049f337633ee))
+![фото.png](https://github.com/An1sov/Happy_New_Year_VPU/commit/66d84abc3db68e0b8beea6e014c5049f337633ee)
