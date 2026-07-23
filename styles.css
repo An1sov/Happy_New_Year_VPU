@@ -1,0 +1,752 @@
+/* ================= RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: linear-gradient(to bottom, #ff7e5f, #feb47b, #fdfdf9);
+}
+
+/* ================= ВАШІ ФЕЄРВЕРКИ (CSS) ================= */
+@keyframes firework {
+    0% {
+        transform: translate(var(--x), 60vmin);
+        width: var(--initialSize);
+        opacity: 1;
+    }
+
+    50% {
+        width: 0.5vmin;
+        opacity: 1;
+    }
+
+    100% {
+        width: var(--finalSize);
+        opacity: 0;
+    }
+}
+
+@keyframes fireworkPseudo {
+    0% {
+        transform: translate(-50%, -50%);
+        width: var(--initialSize);
+        opacity: 1;
+    }
+
+    50% {
+        width: 0.5vmin;
+        opacity: 1;
+    }
+
+    100% {
+        width: var(--finalSize);
+        opacity: 0;
+    }
+}
+
+#fireworks-container {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+    overflow: hidden;
+}
+
+.newyear,
+.newyear::before,
+.newyear::after {
+    --initialSize: 1vmin;
+    --finalSize: 60vmin;
+    --particleSize: 0.4vmin;
+    --color1: yellow;
+    --color2: khaki;
+    --color3: white;
+    --color4: lime;
+    --color5: gold;
+    --color6: mediumseagreen;
+    --y: -30vmin;
+    --x: -50%;
+    content: "";
+    animation: firework 2.5s forwards;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, var(--y));
+    width: var(--initialSize);
+    aspect-ratio: 1;
+    background:
+        radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 50% 0%,
+        radial-gradient(circle, var(--color2) var(--particleSize), #0000 0) 100% 50%,
+        radial-gradient(circle, var(--color3) var(--particleSize), #0000 0) 50% 100%,
+        radial-gradient(circle, var(--color4) var(--particleSize), #0000 0) 0% 50%,
+        radial-gradient(circle, var(--color5) var(--particleSize), #0000 0) 80% 90%,
+        radial-gradient(circle, var(--color6) var(--particleSize), #0000 0) 95% 90%,
+        radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 90% 70%,
+        radial-gradient(circle, var(--color2) var(--particleSize), #0000 0) 100% 60%,
+        radial-gradient(circle, var(--color3) var(--particleSize), #0000 0) 55% 80%,
+        radial-gradient(circle, var(--color4) var(--particleSize), #0000 0) 70% 77%,
+        radial-gradient(circle, var(--color5) var(--particleSize), #0000 0) 22% 90%,
+        radial-gradient(circle, var(--color6) var(--particleSize), #0000 0) 45% 90%,
+        radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 33% 70%,
+        radial-gradient(circle, var(--color2) var(--particleSize), #0000 0) 10% 60%,
+        radial-gradient(circle, var(--color3) var(--particleSize), #0000 0) 31% 80%,
+        radial-gradient(circle, var(--color4) var(--particleSize), #0000 0) 28% 77%,
+        radial-gradient(circle, var(--color5) var(--particleSize), #0000 0) 13% 72%,
+        radial-gradient(circle, var(--color6) var(--particleSize), #0000 0) 80% 10%,
+        radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 95% 14%,
+        radial-gradient(circle, var(--color2) var(--particleSize), #0000 0) 90% 23%,
+        radial-gradient(circle, var(--color3) var(--particleSize), #0000 0) 100% 43%,
+        radial-gradient(circle, var(--color4) var(--particleSize), #0000 0) 85% 27%,
+        radial-gradient(circle, var(--color5) var(--particleSize), #0000 0) 77% 37%,
+        radial-gradient(circle, var(--color6) var(--particleSize), #0000 0) 60% 7%,
+        radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 22% 14%,
+        radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 45% 20%,
+        radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 33% 34%,
+        radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 10% 29%,
+        radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 31% 37%,
+        radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 28% 7%,
+        radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 13% 42%;
+    background-size: var(--initialSize) var(--initialSize);
+    background-repeat: no-repeat;
+}
+
+.newyear::before {
+    transform: translate(-50%, -50%) rotate(40deg) scale(1.3) rotateY(40deg);
+    animation: fireworkPseudo 2.5s forwards;
+}
+
+.newyear::after {
+    transform: translate(-50%, -50%) rotate(170deg) scale(1.15) rotateY(-30deg);
+    animation: fireworkPseudo 2.5s forwards;
+}
+
+.newyear.type-2,
+.newyear.type-2::before,
+.newyear.type-2::after {
+    --color1: pink;
+    --color2: violet;
+    --color3: fuchsia;
+    --color4: orchid;
+    --color5: plum;
+    --color6: lavender;
+}
+
+.newyear.type-3,
+.newyear.type-3::before,
+.newyear.type-3::after {
+    --color1: cyan;
+    --color2: lightcyan;
+    --color3: lightblue;
+    --color4: PaleTurquoise;
+    --color5: SkyBlue;
+    --color6: lavender;
+}
+
+.newyear.type-4,
+.newyear.type-4::before,
+.newyear.type-4::after {
+    --color1: red;
+    --color2: orange;
+    --color3: gold;
+    --color4: crimson;
+    --color5: darkred;
+    --color6: coral;
+}
+
+/* ================= ІНШІ АНІМАЦІЇ ================= */
+@keyframes snowFall {
+    0% {
+        transform: translateY(-20px);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(100vh) translateX(var(--drift, 0));
+        opacity: 0;
+    }
+}
+
+@keyframes sway {
+
+    0%,
+    100% {
+        transform: rotate(-1deg);
+    }
+
+    50% {
+        transform: rotate(1deg);
+    }
+}
+
+@keyframes gallop {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    25% {
+        transform: translateY(-5px) rotate(-3deg);
+    }
+
+    50% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    75% {
+        transform: translateY(-3px) rotate(3deg);
+    }
+}
+
+@keyframes pulse-fire {
+
+    0%,
+    100% {
+        box-shadow: 0 0 15px rgba(255, 69, 0, 0.4);
+        transform: scale(1);
+    }
+
+    50% {
+        box-shadow: 0 0 30px rgba(255, 140, 0, 0.8);
+        transform: scale(1.02);
+    }
+}
+
+@keyframes float-up {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(var(--tx, 0px), -40px);
+    }
+}
+
+@keyframes modalPopIn {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5) rotateX(-20deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1) rotateX(0deg);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+/* ================= SCENE LAYOUT ================= */
+#container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+#snow-container {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.snowflake {
+    position: fixed;
+    pointer-events: none;
+    color: white;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+}
+
+.clouds-wrapper {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+}
+
+.clouds-container {
+    position: relative;
+    width: 100%;
+    max-width: 1280px;
+    height: 100%;
+}
+
+.cloud {
+    position: absolute;
+    pointer-events: auto;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.cloud img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.year-title {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 900;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(to right, #ff2400, #ff8c00, #ffd700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transition: all 0.5s ease;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.scene-wrapper {
+    position: absolute;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.scene-container {
+    position: relative;
+    width: 100%;
+    max-width: 1280px;
+    height: 100%;
+    pointer-events: none;
+}
+
+#christmas-tree-wrapper {
+    position: absolute;
+    left: 15%;
+    bottom: 2%;
+    width: 30%;
+    transform-origin: bottom center;
+    z-index: 20;
+    pointer-events: auto;
+}
+
+#christmas-tree {
+    cursor: pointer;
+    animation: sway 5s ease-in-out infinite;
+}
+
+#christmas-tree img {
+    width: 90%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.15));
+}
+
+.decorated {
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8)) brightness(1.1) !important;
+    transition: all 0.5s ease;
+}
+
+#gingerbread-people {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 15;
+    cursor: pointer;
+    transform-origin: bottom center;
+    transition: transform 0.4s ease-out;
+    pointer-events: auto;
+}
+
+#gingerbread-people img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 20px 13px rgba(0, 0, 0, 0.03)) drop-shadow(0 8px 5px rgba(0, 0, 0, 0.08));
+}
+
+#gingerbread-people:hover {
+    filter: brightness(1.1) drop-shadow(0 0 15px rgba(255, 223, 0, 0.5));
+}
+
+#horse-character {
+    position: absolute;
+    left: 35%;
+    bottom: 5%;
+    width: 15%;
+    z-index: 53;
+    pointer-events: auto;
+    cursor: pointer;
+    animation: gallop 3s ease-in-out infinite;
+    filter: drop-shadow(0 5px 8px rgba(0, 0, 0, 0.3));
+}
+
+#horse-character img {
+    width: 100%;
+    display: block;
+}
+
+/* ================= UI SIDEBAR ================= */
+.ui-sidebar {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 380px;
+    max-height: 90vh;
+    overflow-y: auto;
+    z-index: 100;
+    pointer-events: auto;
+    background: rgba(255, 250, 245, 0.25);
+    backdrop-filter: blur(9px) saturate(150%);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 2rem;
+    padding: 1.5rem;
+    box-shadow: 0 10px 25px rgba(139, 0, 0, 0.15);
+    color: #4a0404;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.main-title {
+    font-family: 'Marck Script', cursive;
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    text-align: center;
+    background: linear-gradient(to right, #d32f2f, #ff6f00, #fdd835);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #8b0000;
+    font-weight: 700;
+}
+
+.funny-box {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 140, 0, 0.3);
+    border-radius: 1rem;
+    padding: 1rem;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #5c1e1e;
+}
+
+.buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+}
+
+.interactive-btn {
+    padding: 0.8rem;
+    border: none;
+    border-radius: 1rem;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.interactive-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 69, 0, 0.25);
+}
+
+.interactive-btn:active {
+    transform: scale(0.98);
+}
+
+.btn-fortune {
+    background: linear-gradient(135deg, #ff4500, #ff8c00);
+}
+
+.btn-lucky {
+    background: linear-gradient(135deg, #dc143c, #ff1493);
+}
+
+.btn-jingle {
+    background: linear-gradient(135deg, #d2691e, #8b4500);
+}
+
+.btn-decorate {
+    background: linear-gradient(135deg, #ffd700, #ffa500);
+    color: #8b0000;
+}
+
+.btn-wish {
+    background: linear-gradient(135deg, #4b0082, #8a2be2);
+}
+
+.btn-trivia {
+    background: linear-gradient(135deg, #ff6347, #ff7f50);
+}
+
+.btn-victory {
+    background: linear-gradient(135deg, #0057B8, #FFD700);
+    grid-column: span 2;
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    border: 2px solid #FFD700;
+}
+
+.btn-victory:hover {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+}
+
+.celebrate-btn {
+    grid-column: span 2;
+    padding: 1rem;
+    font-size: 1.2rem;
+    background: linear-gradient(to right, #ff0000, #ff8c00, #ffff00);
+    animation: pulse-fire 2s infinite;
+}
+
+.countdown-section {
+    text-align: center;
+}
+
+.countdown-label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #8b0000;
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+}
+
+.countdown-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.countdown-item {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 69, 0, 0.3);
+    border-radius: 0.8rem;
+    padding: 0.6rem 0.3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.countdown-value {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #ff4500;
+    line-height: 1;
+}
+
+.countdown-label-small {
+    font-size: 0.65rem;
+    color: #8b0000;
+    font-weight: 600;
+    margin-top: 0.2rem;
+}
+
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    z-index: 9998;
+    opacity: 0;
+    animation: fadeIn 0.3s forwards;
+}
+
+.game-result {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fffafa;
+    border-radius: 2rem;
+    padding: 2.5rem;
+    text-align: center;
+    z-index: 9999;
+    width: 90%;
+    max-width: 420px;
+    box-shadow: 0 0 50px rgba(255, 69, 0, 0.3);
+    animation: modalPopIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 3px solid #ff4500;
+}
+
+.close-game {
+    margin-top: 1.5rem;
+    padding: 0.8rem 2rem;
+    background: linear-gradient(to right, #ff4500, #ff8c00);
+    color: white;
+    border: none;
+    border-radius: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.close-game:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 69, 0, 0.4);
+}
+
+.site-link-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #2563eb, #1e40af);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+}
+
+.site-link-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.hidden {
+    display: none !important;
+}
+
+.confetti,
+.sparkle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 150;
+}
+
+.sparkle {
+    animation: float-up 0.8s ease-out forwards;
+    text-shadow: 0 0 10px #ffd700;
+    font-size: 1.5rem;
+}
+
+.victory-particle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 200;
+}
+
+/* ОПТИМІЗАЦІЯ ДЛЯ МОБІЛЬНИХ */
+@media (max-width: 1024px) {
+    .ui-sidebar {
+        width: 320px;
+        right: 20px;
+        padding: 1.5rem;
+    }
+
+    #christmas-tree-wrapper {
+        width: 30%;
+    }
+
+    #gingerbread-people {
+        transform: scale(1.1);
+    }
+
+    #horse-character {
+        width: 18%;
+        left: 30%;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Відключаємо важкі фільтри на телефонах */
+    .ui-sidebar,
+    .modal-backdrop {
+        backdrop-filter: none;
+        background: rgba(255, 250, 245, 0.95);
+    }
+
+    .scene-wrapper {
+        opacity: 1;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    .scene-container>* {
+        pointer-events: auto;
+    }
+
+    #christmas-tree-wrapper {
+        transform: scale(1.4);
+    }
+
+    #gingerbread-people {
+        transform: scale(1.4);
+    }
+
+    #horse-character {
+        width: 28%;
+        left: 10%;
+        bottom: 10%;
+    }
+
+    .ui-sidebar {
+        position: relative;
+        width: 90%;
+        max-width: 400px;
+        top: auto;
+        right: auto;
+        transform: none;
+        margin: 2rem auto;
+        max-height: none;
+    }
+
+    .main-title {
+        font-size: 2.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #christmas-tree-wrapper {
+        left: 13%;
+        transform: scale(1.8);
+    }
+
+    #gingerbread-people {
+        transform: scale(1.8);
+    }
+}

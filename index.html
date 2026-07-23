@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Свято Наближається 2026! 🐎🔥</title>
+    <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="./festival-fireworks-icon.png" type="image/x-icon">
+</head>
+
+<body>
+    <div style="position:fixed; inset:0; pointer-events:none; z-index:9000;"></div>
+
+    <div id="container">
+        <div id="fireworks-container"></div>
+
+        <audio id="holiday-audio" loop>
+            <source src="" type="audio/mpeg">
+        </audio>
+        <audio id="jingle-sound">
+            <source src="https://assets.mixkit.co/active_storage/sfx/212/212-preview.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="ukr-carol">
+            <source
+                src="./Щедрик - музика (без слів) _ Shchedryk - instrumental version - Український Повстанець (1).mp3"
+                type="audio/ogg">
+        </audio>
+        <audio id="skryabin-song">
+            <source src="./1695710223_skryabn-star-fotografyi.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="victory-sound">
+            <source src="https://assets.mixkit.co/active_storage/sfx/2019/2019-preview.mp3" type="audio/mpeg">
+        </audio>
+
+        <audio id="firework-sound">
+            <source src="./fireworks-12-419031.mp3" type="audio/mpeg">
+        </audio>
+
+        <div id="snow-container"></div>
+
+        <div class="clouds-wrapper">
+            <div class="clouds-container">
+                <div class="cloud"
+                    style="width: 800px; animation: float 6s ease-in-out infinite; top: 172px; left: 400px; opacity: 0.7;">
+                    <h1 class="year-title" id="yearTitle">2026</h1>
+                </div>
+                <div class="cloud"
+                    style="width: 800px; animation: float 6s ease-in-out infinite; top: 6rem; right: 8rem; opacity: 0.7;">
+                    <img src="./Зображенввввня2.webp" alt="cloud">
+                </div>
+                <div class="cloud"
+                    style="width: 400px; animation: float 8s ease-in-out infinite reverse; top: 1rem; right: 5rem; opacity: 0.6;">
+                    <img src="./Зображеннвввя3.webp" alt="cloud">
+                </div>
+                <div class="cloud"
+                    style="width: 500px; animation: float 5s ease-in-out infinite; top: 20rem; left: 0.25rem; opacity: 0.9;">
+                    <img src="./Зображення1.webp" alt="cloud">
+                </div>
+            </div>
+        </div>
+
+        <div class="scene-wrapper">
+            <div class="scene-container">
+                <div id="christmas-tree-wrapper">
+                    <div id="christmas-tree">
+                        <img src="./Зображення2.webp" alt="christmas tree">
+                    </div>
+                </div>
+                <div id="gingerbread-people">
+                    <img src="./віаіваіва.webp" alt="gingerbread house">
+                </div>
+            </div>
+        </div>
+
+        <div class="ui-sidebar">
+            <div>
+                <h1 class="main-title">Новий Рік 2026! 🐎</h1>
+                <p class="subtitle">Рік Червоного Вогняного Коня 🔥</p>
+            </div>
+
+            <div class="funny-box">
+                "У рік Коня головне — не загнати себе, а скакати до мрії! 🤠 Вперед галопом!"
+            </div>
+            <div class="funny-box">
+                "Той момент, коли ти обіцяєш собі змінитися, але вже 7 січня ти все те ж саме... 💀
+                <br style="display: none;">
+                Але хай! Принаймні у нас є ще 358 днів для спроб! 😎"
+            </div>
+
+            <div class="buttons-grid">
+                <button class="interactive-btn btn-fortune" id="fortuneBtn">🔮 Доля</button>
+                <button class="interactive-btn btn-lucky" id="luckyBtn">🎲 Число</button>
+                <button class="interactive-btn btn-jingle" id="jingleBtn">🔔 Дзвіночки</button>
+                <button class="interactive-btn btn-decorate" id="decorateBtn">✨ Прикрасити</button>
+                <button class="interactive-btn btn-wish" id="wishBtn">🎁 Сюрприз</button>
+                <button class="interactive-btn btn-trivia" id="triviaBtn">❓ Факт</button>
+                <button class="interactive-btn celebrate-btn" id="celebrateBtn">🔥 ЗАПАЛЮЄМО! 🔥</button>
+            </div>
+
+            <div class="countdown-section">
+                <p class="countdown-label">До старту 2026 року:</p>
+                <div class="countdown-grid">
+                    <div class="countdown-item">
+                        <span class="countdown-value" id="days">00</span>
+                        <span class="countdown-label-small">ДНІВ</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-value" id="hours">00</span>
+                        <span class="countdown-label-small">ГОД</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-value" id="minutes">00</span>
+                        <span class="countdown-label-small">ХВ</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-value" id="seconds">00</span>
+                        <span class="countdown-label-small">СЕК</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-backdrop hidden" id="modalBackdrop"></div>
+        <div class="game-result hidden" id="gameResult">
+            <h2 style="color: #ff4500; margin-bottom: 1rem; font-family: 'Marck Script', cursive; font-size: 2.5rem;"
+                id="gameResultTitle"></h2>
+            <div style="font-size: 1.2rem; color: #334155; line-height: 1.6;" id="gameResultText"></div>
+            <button class="close-game" id="closeGameBtn">Супер! 🐎</button>
+        </div>
+    </div>
+    <script src="js.js"></script>
+</body>
+
+</html>
